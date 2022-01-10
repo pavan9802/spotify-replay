@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+}
+
+
+.artists{
+    background-image: url("https://image.freepik.com/free-photo/people-entertainment-hobby-concept-cheerful-young-african-american-woman-with-curly-hair-holds-modern-smartphone-listens-music-via-stereo-headphones-poses-against-vivid-orange-background_273609-46067.jpg") ;
+    height:500px; 
+  }
+  
+  .tracks{
+    background-image: url("https://thumbs.dreamstime.com/b/cheerful-young-african-woman-listening-to-music-headphones-isolated-over-grey-background-dancing-copy-space-187130318.jpg") ;
+    height:500px;
+    text-align: bottom ; 
+  }
+  .text{
+
+    color: white;
+  }
+
+  .panel_container{
+    animation: show .5s;
+  }
+
+  
+  @keyframes show{
+    0%   {opacity: 0;}
+    25%  {opacity: .25}
+    50%  {opacity: .5}
+    75%  {opacity: .75}
+    100% {opacity: 1}
+  
+}

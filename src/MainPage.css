@@ -1,0 +1,51 @@
+
+.container{
+    display: flex; 
+    justify-content:space-between;
+   
+    background-color: #f5f6fa;
+}
+.right{
+    flex:.1;
+}
+.mid{
+    padding: 100px;
+    margin-left: 100px;
+    flex:.7;
+}
+.left{
+   
+    width:110px;
+    background-color: orange;
+}
+
+
+.buttons{
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    
+}
+.btn{
+    font-size: 20px;
+    margin-left: 15px;
+    background:orange;
+    color:white;
+    margin-top: 75px;
+    border:none;
+    font-weight: bold;
+ 
+
+}
+
+.btn:hover{
+    color:rgb(35, 146, 219);
+    font-size:22px;
+    background:orange;
+    cursor: pointer;
+}
+
+.img:hover{
+   width: 75px;
+   height: 75px;
+}

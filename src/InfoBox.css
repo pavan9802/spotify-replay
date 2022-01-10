@@ -1,0 +1,29 @@
+a:link{
+    text-decoration: none;
+}
+.row{
+    margin-top: 25px;
+ display: flex;
+ justify-content:space-between;
+ 
+}
+.num {
+ 
+    flex:.1;
+}
+.picture{
+ 
+    justify-content:space-between;
+    flex:.15;
+    
+}
+.info{
+    flex:.9;
+}
+.info_box{
+    height: 150px;
+}
+.info_box:hover{
+    padding: 15px;
+}
+
