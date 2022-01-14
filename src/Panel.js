@@ -7,7 +7,7 @@ import SpotifyWebApi from "spotify-web-api-js";
 import InfoBox from "./InfoBox";
 import {Typography } from "@material-ui/core";
 import { makeStyles } from '@mui/styles';
-
+import Fade from 'react-reveal/Fade';
 import "./Panel.css";
 import { yellow } from "@mui/material/colors";
 
@@ -100,7 +100,7 @@ export default function Panel({ token, type }) {
           </h1>
         </div>
       </div>
-
+    <Fade>
       <div className="panel_container">
         <Box sx={{ width: "100%" }}>
           <Box sx={{color:yellow , borderBottom: 0}}>
@@ -120,6 +120,7 @@ export default function Panel({ token, type }) {
               <Tab label="Last 4 Weeks" {...a11yProps(2)} />
             </Tabs>
           </Box>
+          {/* <Fade> */}
           <TabPanel value={value} index={0}>
             {data === null ? (
               console.log("here")
@@ -141,8 +142,10 @@ export default function Panel({ token, type }) {
               <InfoBox type={type} data={data} />
             )}
           </TabPanel>
+          {/* </Fade> */}
         </Box>
       </div>
+      </Fade>
     </>
   );
 }

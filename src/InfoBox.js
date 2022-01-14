@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardContent } from "@material-ui/core";
+import Fade from 'react-reveal/Fade';
 import "./InfoBox.css"
 
 function InfoBox({type, data}) {
@@ -7,8 +8,11 @@ function InfoBox({type, data}) {
     
   
     return (
+        <Fade delay={300}>
         <div className = "idk">
+                
               { data.items  !== undefined ?data.items.map((item, index) => (
+                
                  <a href={item.external_urls.spotify}>
                 <Card className = "info_box">
                 <CardContent>
@@ -60,11 +64,12 @@ function InfoBox({type, data}) {
                 </CardContent>
                 </Card>
                   </a>
-
+                
             )):console.log('yghglkjhkljhlkjhlk') }
             
-             
+           
         </div>
+        </Fade>
     )
 
  

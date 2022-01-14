@@ -22,8 +22,12 @@ a:link{
 }
 .info_box{
     height: 150px;
+    
 }
 .info_box:hover{
-    padding: 15px;
+    padding: 10px;
+}
+img{
+    border-radius: 10%;
 }
 
