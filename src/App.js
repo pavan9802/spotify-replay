@@ -1,10 +1,11 @@
-import React, { useEffect,useState } from "react";
-import MainPage from "./MainPage";
-import Login from "./Login";
+import React, { useEffect } from "react";
+import MainPage from "./Components/MainPage";
+import Login from "./Components/Login";
 import { getTokenFromResponse } from "./spotify";
 import "./App.css";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { SpotifyState } from "./SpotifyContext";
 
 
 const firebaseConfig = {
@@ -22,7 +23,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 function App() {
-  const [ token , setToken] = useState();
+  
+  const {token, setToken, } = SpotifyState();
 
   useEffect(() => {
     // Set token
@@ -30,6 +32,8 @@ function App() {
     window.location.hash = "";
     let _token = hash.access_token;
     setToken(_token)
+    
+    
     
 
   }, []);
@@ -39,12 +43,10 @@ function App() {
 
     <div className="app">
       {!token ? <Login/>:
-        
-        <MainPage
-        token = {token}
-        />
-        
+          
+        <MainPage/>    
       }
+    
 
     </div>
   );

@@ -18,10 +18,11 @@ a:link{
     
 }
 .info{
-    flex:.9;
+    flex:.75;
 }
 .info_box{
     height: 150px;
+    width: 900px;
     
 }
 .info_box:hover{

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Card, CardContent } from "@material-ui/core";
 import Fade from 'react-reveal/Fade';
+import { SpotifyState } from "../SpotifyContext";
 import "./InfoBox.css"
 
-function InfoBox({type, data}) {
+function InfoBox() {
     // console.log(data);
-    
+    const {type, data} = SpotifyState();
   
     return (
         <Fade delay={300}>
@@ -13,7 +14,9 @@ function InfoBox({type, data}) {
                 
               { data.items  !== undefined ?data.items.map((item, index) => (
                 
-                 <a href={item.external_urls.spotify}>
+                 <a href={type !=="recently_played"? item.external_urls ? item.external_urls.spotify: console.log("error getting url") 
+                : item.track? item.track.external_urls.spotify: console.log("error getting url")
+                     }>
                 <Card className = "info_box">
                 <CardContent>
                 
@@ -30,8 +33,9 @@ function InfoBox({type, data}) {
                         
                             <img
                                src={type ==="artists" ? item.images? item.images[2].url: console.log('error InfoBox images')
-                               : item.album?  item.album.images[2].url : console.log('error InfoBox images')}
-                                alt="img"
+                               : type ==="tracks" ?item.album?  item.album.images[2].url : console.log('error InfoBox images')
+                                : item.track? item.track.album.images[2].url : console.log('error InfoBox images')}
+                                alt= "Loading"
                                 height="75px"
                                 width="75px"
                             />
@@ -41,7 +45,8 @@ function InfoBox({type, data}) {
 
                     <div className="info">
                         <div className="name">
-                            <h4>{item.name}</h4>
+                            <h4>{type !=="recently_played"?item.name
+                            :item.track? item.track.name: console.log("error getting name")}</h4>
                         </div >
 
                         <div className="rest">
@@ -50,7 +55,8 @@ function InfoBox({type, data}) {
                         
 
                             {type ==="artists"?item.genres
-                                : item.artists? item.artists[0].name : console.log("error geting artists")}
+                                :type ==="tracks" ? item.artists? item.artists[0].name : console.log("error geting artists")
+                                :item.track?item.track.artists[0].name:console.log("error geting artists")}
                             
                             </p>
                             
