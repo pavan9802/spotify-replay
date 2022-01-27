@@ -4,10 +4,10 @@ const Spotify = createContext();
 
 const SpotifyContext = ({ children }) => {
   const [type, setType] = useState("artists");
-
+  const [profilePic, setProfilePic] = useState("");
   const [token, setToken] = useState("");
   const [data, setData] = useState({});
-
+  const [username, setUsername] = useState();
   const [alert, setAlert] = useState({
     open: false,
     message: "",
@@ -28,6 +28,11 @@ const SpotifyContext = ({ children }) => {
         setAlert,
         s,
         setS,
+        profilePic,
+        setProfilePic,
+        username, 
+        setUsername
+       
       }}
     >
       {children}

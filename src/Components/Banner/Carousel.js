@@ -30,6 +30,7 @@ const Carousel = () => {
   useEffect(() => {
     s.setAccessToken(token);
     s.getPlaylist("37i9dQZEVXbLRQDuF5jeBp").then((response) => {
+      console.log(cData);
       setCData(response);
     });
   }, [token]);
@@ -40,7 +41,9 @@ const Carousel = () => {
     cData !== undefined
       ? cData.tracks.items.map((item) => {
           return (
+            
             <div className={classes.carouselItem}>
+             
               <img
                 src={item?.track.album.images[2].url}
                 alt={item?.track.album.name}
@@ -54,7 +57,9 @@ const Carousel = () => {
               <span style={{ fontSize: 15, fontWeight: 500 }}>
                 By: {item.track.artists[0].name}
               </span>
+            
             </div>
+            
           );
         })
       : console.log("error mapping");

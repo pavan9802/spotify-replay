@@ -6,6 +6,7 @@ import AudiotrackIcon from "@mui/icons-material/Audiotrack";
 import BrushIcon from "@mui/icons-material/Brush";
 import { makeStyles } from "@material-ui/core/styles";
 import { SpotifyState } from "../SpotifyContext";
+import UserButton from "./UserButton";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -16,11 +17,23 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     background: "gold",
+    display:"flex",
   },
   bottomNav: {
-    // backgroundColor:'transparent',
-    color: "gold",
+   
+    "& .MuiTabs-indicator": {
+      backgroundColor: "gold"
+    },
+  
+    
   },
+  action:{
+    "&:hover": {
+      transform: "scale(1.1)",
+      fontWeight:"500",     
+    },
+    
+  }
 }));
 
 const Header = () => {
@@ -39,31 +52,35 @@ const Header = () => {
             {/* Spotify */}
           </Typography>
 
-          <Box sx={{ width: 500 }}>
+          <Box sx={{ width: 500 , marginRight:5}}>
             <BottomNavigation
-              style={{ backgroundColor: "transparent", fontSize: 300 }}
-              textColor={classes.bottomNav}
+              style={{ backgroundColor: "transparent" }}
+              className={classes.bottomNav}        
               // showLabels
               value={type}
               onChange={handleChange}
             >
               <BottomNavigationAction
+               className={classes.action}        
                 value="artists"
                 label="Artists"
                 icon={<BrushIcon />}
               />
               <BottomNavigationAction
+               className={classes.action}        
                 value="tracks"
                 label="Tracks"
                 icon={<AudiotrackIcon />}
               />
               <BottomNavigationAction
+               className={classes.action}        
                 value="recently_played"
                 label="Recently Played"
                 icon={<RestoreIcon />}
               />
             </BottomNavigation>
           </Box>
+          <UserButton/>
         </Toolbar>
       </Container>
     </AppBar>

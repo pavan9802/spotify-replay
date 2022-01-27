@@ -21,7 +21,9 @@ a:link {
   width: 900px;
 }
 .info_box:hover {
-  padding: 10px;
+  /* padding: 10px; */
+  box-shadow: 0 0 10px black;
+  transform: scale(1.03);
 }
 img {
   border-radius: 10%;
@@ -29,7 +31,7 @@ img {
 
 @media (max-width: 990px) {
   .info_box {
-    width: 445px;
+    width: 375px;
   }
   .num {
     flex: 0.1;

@@ -1,16 +1,15 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Replace with your app's client ID, redirect URI and desired scopes
-const clientId = "f444673ce18846049f1a05f01211d237";
+const clientId = "";
 
 const redirectUri ="https://spotify-replay-e7c30.web.app/";
 // const redirectUri = "http://localhost:3000/";
 
 const scopes = [
-  "user-read-currently-playing",
+  "playlist-modify-private",
   "user-read-recently-played",
-  "user-read-playback-state",
   "user-top-read",
-  "user-modify-playback-state",
+  "user-read-private",
 ];
 
 export const getTokenFromResponse = () => {

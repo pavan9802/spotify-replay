@@ -6,7 +6,7 @@ import "./InfoBox.css";
 
 
 function InfoBox() {
-  // console.log(data);
+
   const { type, data } = SpotifyState();
 
   return (
@@ -83,7 +83,7 @@ function InfoBox() {
                 </Card>
               </a>
             ))
-          : console.log("yghglkjhkljhlkjhlk")}
+          : console.log("")}
       </div>
     </Fade>
   );

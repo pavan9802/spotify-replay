@@ -1,0 +1,33 @@
+.rec_box{
+    height: 150px;
+    width: 900px;
+  }
+  .box_container{
+      display: flex;
+      justify-content: space-between;
+  }
+.container_left{
+    flex:1;
+}
+.container_right{
+    align-items: center ;
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    width: 300px;
+    height: 50px;
+    background-color: gold;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+
+}
+
+  @media (max-width: 990px) {
+    .rec_box {
+      width: 375px;
+    }
+  }
+  

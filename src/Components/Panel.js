@@ -10,6 +10,7 @@ import { Typography } from "@material-ui/core";
 import { SpotifyState } from "../SpotifyContext";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -43,32 +44,39 @@ function a11yProps(index) {
   };
 }
 
-const s = new SpotifyWebApi();
+
 
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: "transparent",
-    color: "gold",
-    fontWeight: "bolder",
-    fontSize: 200,
+  tabs: {
+    "& .MuiTabs-indicator": {
+      backgroundColor:"black",
+      
+    },
+    backgroundColor:"gold",
+    borderRadius: 50,
+    
+   
   },
-  tab: {
-    fontSize: 500,
-    // fontWeight: "bold" ,
-    marginRight: "400px",
-  },
-  panel_container: {
-    display: "flex",
-    marginLeft: 500,
-  },
+  tab:{
+    "&:hover": {
+      transform: "scale(1.05)",
+      fontWeight:"500",
+      opacity: 1,
+      
+     
+    },
+   
+  }
+  
+
 });
 
 export default function Panel() {
+  const s = new SpotifyWebApi();
   const [value, setValue] = useState(0);
-
   const { token, type, data, setData } = SpotifyState();
-
   const classes = useStyles();
+  const limit = 25
 
   function fetchData(time_range) {
     if (time_range === 0) {
@@ -81,19 +89,26 @@ export default function Panel() {
       time_range = "short_term";
     }
     if (type === "artists") {
-      s.getMyTopArtists({ time_range: time_range }).then((response) =>
+      s.getMyTopArtists({limit: limit, time_range: time_range }).then((response) =>{
+        console.log(response);
         setData(response)
+      }
+       
       );
     }
     if (type === "tracks") {
-      s.getMyTopTracks({ time_range: time_range }).then((response) =>
+      s.getMyTopTracks({limit: limit, time_range: time_range }).then((response) =>{
+        console.log(response);
         setData(response)
+      }
+       
       );
     }
     if (type === "recently_played") {
-      s.getMyRecentlyPlayedTracks({ tlimit: 20 }).then(
-        (response) => setData(response)
-        //  console.log(response)
+      s.getMyRecentlyPlayedTracks({ limit: limit}).then((response) => {
+        console.log(response);
+        setData(response)
+      }
       );
     }
   }
@@ -119,21 +134,21 @@ export default function Panel() {
                 centered
                 value={value}
                 onChange={handleChange}
-                className={classes.root}
-                aria-label="basic tabs example"
-                textColor={classes.root}
+                textColor="black"
+                className={classes.tabs}
+      
               >
-                <Tab
-                  className={classes.tab}
+                <Tab sx={{  width: "33%"}}
+                 className={classes.tab}
                   label="All Time"
                   {...a11yProps(0)}
                 />
-                <Tab
+                <Tab  sx={{  width: "33%"}}
                   className={classes.tab}
                   label="Last 6 Months"
                   {...a11yProps(1)}
                 />
-                <Tab
+                <Tab  sx={{  width: "33%"}}
                   className={classes.tab}
                   label="Last 4 Weeks"
                   {...a11yProps(2)}
@@ -161,6 +176,7 @@ export default function Panel() {
       ) : (
         <InfoBox />
       )}
+      
     </>
   );
 }
